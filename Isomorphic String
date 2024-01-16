@@ -1,0 +1,19 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        char_map_st = {}
+        char_map_ts = {}
+
+        for char_s, char_t in zip(s, t):
+            if (char_s in char_map_st and char_map_st[char_s] != char_t) or \
+               (char_t in char_map_ts and char_map_ts[char_t] != char_s):
+                return False
+            
+            char_map_st[char_s] = char_t
+            char_map_ts[char_t] = char_s
+
+        return True
+
+
